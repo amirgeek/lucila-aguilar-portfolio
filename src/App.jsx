@@ -143,9 +143,9 @@ export default function App() {
             <h2>Cuando me pases su info, acá van Instagram, WhatsApp y mail.</h2>
           </div>
           <div className="contact-box">
-            <a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
-            <a href="https://wa.me" target="_blank" rel="noreferrer">WhatsApp</a>
-            <a href="mailto:hola@lucilaaguilar.com">Mail</a>
+            <a href="https://www.instagram.com/lucilaaguilar" target="_blank" rel="noreferrer">Instagram</a>
+            <a href="https://wa.me/5492235041316" target="_blank" rel="noreferrer">WhatsApp</a>
+            <a href="https://wa.me/5492235041316" target="_blank" rel="noreferrer">Reservar sesión</a>
           </div>
         </section>
       </main>
