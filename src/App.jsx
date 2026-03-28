@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const projects = [
@@ -28,11 +28,16 @@ const services = ['Retratos', 'Editorial', 'Lifestyle', 'Cobertura de eventos'];
 
 export default function App() {
   const [activeProject, setActiveProject] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const currentProject = useMemo(
     () => projects.find((project) => project.slug === activeProject) || null,
     [activeProject]
   );
+
+  useEffect(() => {
+    if (currentProject) setMenuOpen(false);
+  }, [currentProject]);
 
   if (currentProject) {
     return <ProjectView project={currentProject} onBack={() => setActiveProject(null)} />;
@@ -45,10 +50,15 @@ export default function App() {
           <span className="brand-kicker">Portfolio</span>
           <div className="brand-name">Lucila Aguilar</div>
         </div>
-        <nav className="topnav">
-          <a href="#proyectos">Proyectos</a>
-          <a href="#sobre-mi">Sobre mí</a>
-          <a href="#contacto">Contacto</a>
+        <button className={`burger ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen((v) => !v)} aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav className={`topnav burger-nav ${menuOpen ? 'open' : ''}`}>
+          <a href="#proyectos" onClick={() => setMenuOpen(false)}>Proyectos</a>
+          <a href="#sobre-mi" onClick={() => setMenuOpen(false)}>Sobre mí</a>
+          <a href="#contacto" onClick={() => setMenuOpen(false)}>Contacto</a>
         </nav>
       </header>
 
