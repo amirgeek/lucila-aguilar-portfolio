@@ -78,7 +78,7 @@ export default function App() {
             transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
             <img className="hero-photo ph-a" src={projects[0].hero} alt={projects[0].title} />
-            <div className="hero-note">Portfolio en construcción con material real seleccionado del archivo.</div>
+            <div className="hero-note">Una selección de imágenes que mezclan sensibilidad, presencia y narrativa visual.</div>
           </motion.div>
         </section>
 
@@ -120,9 +120,9 @@ export default function App() {
         <section id="sobre-mi" className="about-section">
           <div className="about-copy">
             <span className="eyebrow">Sobre mí</span>
-            <h2>Una fotógrafa que trabaja desde la emoción, la luz y el detalle.</h2>
+            <h2>Una mirada sensible, editorial y profundamente ligada a la atmósfera de cada escena.</h2>
             <p>
-              Esta sección está lista para que después pongamos su bio real. La idea es que se sienta editorial, sensible y profesional al mismo tiempo, sin parecer una plantilla genérica.
+              Lucila Aguilar trabaja entre el retrato, la cobertura y la observación íntima, buscando imágenes con textura, emoción y presencia. Su trabajo combina cercanía, luz y una estética cinematográfica que transforma momentos reales en narrativa visual.
             </p>
           </div>
           <div className="about-panel">
@@ -140,7 +140,7 @@ export default function App() {
         <section id="contacto" className="contact-section">
           <div>
             <span className="eyebrow">Contacto</span>
-            <h2>Cuando me pases su info, acá van Instagram, WhatsApp y mail.</h2>
+            <h2>Si querés trabajar conmigo, podés escribirme por Instagram o WhatsApp.</h2>
           </div>
           <div className="contact-box">
             <a href="https://www.instagram.com/lucilaaguilar" target="_blank" rel="noreferrer">Instagram</a>
