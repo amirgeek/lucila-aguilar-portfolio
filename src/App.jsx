@@ -13,6 +13,16 @@ const projects = [
     photos: Array.from({ length: 18 }, (_, i) => `/images/28-08/${String(i + 7).padStart(2, '0')}.jpg`),
   },
   {
+    slug: 'cami',
+    category: 'Retrato / Preparación',
+    title: 'CAMI — retratos y detalles',
+    description:
+      'Una serie más cercana, con preparación, detalles y retratos íntimos construidos desde la observación.',
+    cover: '/images/cami/02.jpg',
+    hero: '/images/cami/04.jpg',
+    photos: Array.from({ length: 20 }, (_, i) => `/images/cami/${String(i + 1).padStart(2, '0')}.jpg`),
+  },
+  {
     slug: 'sea-and-coffee',
     category: 'Lifestyle / Detalle',
     title: 'Sea and Coffee',
@@ -87,7 +97,7 @@ export default function App() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
-            <img className="hero-photo ph-a" src={projects[0].hero} alt={projects[0].title} />
+            <img className="hero-photo ph-a" src="/images/hero.jpg" alt="Lucila Aguilar hero" />
             <div className="hero-note">Una selección de imágenes que mezclan sensibilidad, presencia y narrativa visual.</div>
           </motion.div>
         </section>
