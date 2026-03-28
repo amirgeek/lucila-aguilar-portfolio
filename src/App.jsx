@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
 
 const placeholderShots = [
-  { title: 'Retrato editorial', ratio: 'portrait' },
-  { title: 'Luz natural', ratio: 'landscape' },
-  { title: 'Detalle íntimo', ratio: 'square' },
-  { title: 'Movimiento', ratio: 'landscape' },
-  { title: 'Cinemático', ratio: 'portrait' },
-  { title: 'Narrativa visual', ratio: 'square' },
+  { title: 'Escena en spotlight', ratio: 'landscape', image: '/images/28-08/10.jpg' },
+  { title: 'Backstage', ratio: 'portrait', image: '/images/28-08/12.jpg' },
+  { title: 'Ritmo de escenario', ratio: 'square', image: '/images/28-08/09.jpg' },
+  { title: 'Luz teatral', ratio: 'landscape', image: '/images/28-08/14.jpg' },
+  { title: 'Atmósfera íntima', ratio: 'portrait', image: '/images/sea-and-coffee/04.jpg' },
+  { title: 'Detalle autoral', ratio: 'square', image: '/images/sea-and-coffee/08.jpg' },
 ];
 
 const services = [
@@ -56,8 +56,8 @@ export default function App() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="hero-photo ph-a" />
-            <div className="hero-note">Acá va una de sus mejores fotos apenas las subas.</div>
+            <img className="hero-photo ph-a" src="/images/28-08/09.jpg" alt="Lucila Aguilar portfolio hero" />
+            <div className="hero-note">Selección inicial armada con material real del portfolio.</div>
           </motion.div>
         </section>
 
@@ -83,7 +83,7 @@ export default function App() {
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6, delay: index * 0.04 }}
               >
-                <div className="shot-visual" />
+                <img className="shot-visual" src={shot.image} alt={shot.title} loading="lazy" />
                 <div className="shot-meta">
                   <span>{shot.title}</span>
                 </div>
