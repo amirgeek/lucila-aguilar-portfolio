@@ -267,8 +267,28 @@ button { font: inherit; }
 
 @media (max-width: 760px) {
   .site-shell { padding: 18px; }
-  .topbar { flex-direction: column; align-items: flex-start; }
+  .topbar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand-block {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+  .brand-name {
+    font-size: 1.7rem;
+    line-height: 1;
+  }
   .topnav { gap: 16px; flex-wrap: wrap; }
-  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .hero-actions {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .primary-link, .secondary-link {
+    min-width: 0;
+    white-space: nowrap;
+  }
   .project-gallery, .projects-grid { grid-template-columns: 1fr; }
 }
