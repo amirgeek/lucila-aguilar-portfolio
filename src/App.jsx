@@ -1,22 +1,43 @@
+import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 
-const placeholderShots = [
-  { title: 'Escena en spotlight', ratio: 'landscape', image: '/images/28-08/10.jpg' },
-  { title: 'Backstage', ratio: 'portrait', image: '/images/28-08/12.jpg' },
-  { title: 'Ritmo de escenario', ratio: 'square', image: '/images/28-08/09.jpg' },
-  { title: 'Luz teatral', ratio: 'landscape', image: '/images/28-08/14.jpg' },
-  { title: 'Atmósfera íntima', ratio: 'portrait', image: '/images/sea-and-coffee/04.jpg' },
-  { title: 'Detalle autoral', ratio: 'square', image: '/images/sea-and-coffee/08.jpg' },
+const projects = [
+  {
+    slug: 'escena-28-08',
+    category: 'Cobertura / Escena',
+    title: '28/08 — Escena y backstage',
+    description:
+      'Una serie con luces duras, escenario, momentos detrás de cámara y retratos con atmósfera teatral.',
+    cover: '/images/28-08/09.jpg',
+    hero: '/images/28-08/10.jpg',
+    photos: Array.from({ length: 18 }, (_, i) => `/images/28-08/${String(i + 7).padStart(2, '0')}.jpg`),
+  },
+  {
+    slug: 'sea-and-coffee',
+    category: 'Lifestyle / Detalle',
+    title: 'Sea and Coffee',
+    description:
+      'Una serie más íntima y observacional, con detalles, objetos, café, comida y una mirada más cotidiana.',
+    cover: '/images/sea-and-coffee/04.jpg',
+    hero: '/images/sea-and-coffee/08.jpg',
+    photos: Array.from({ length: 10 }, (_, i) => `/images/sea-and-coffee/${String(i + 1).padStart(2, '0')}.jpg`),
+  },
 ];
 
-const services = [
-  'Retratos',
-  'Editorial',
-  'Lifestyle',
-  'Cobertura de eventos',
-];
+const services = ['Retratos', 'Editorial', 'Lifestyle', 'Cobertura de eventos'];
 
 export default function App() {
+  const [activeProject, setActiveProject] = useState(null);
+
+  const currentProject = useMemo(
+    () => projects.find((project) => project.slug === activeProject) || null,
+    [activeProject]
+  );
+
+  if (currentProject) {
+    return <ProjectView project={currentProject} onBack={() => setActiveProject(null)} />;
+  }
+
   return (
     <div className="site-shell">
       <header className="topbar">
@@ -25,7 +46,7 @@ export default function App() {
           <div className="brand-name">Lucila Aguilar</div>
         </div>
         <nav className="topnav">
-          <a href="#trabajos">Trabajos</a>
+          <a href="#proyectos">Proyectos</a>
           <a href="#sobre-mi">Sobre mí</a>
           <a href="#contacto">Contacto</a>
         </nav>
@@ -42,10 +63,10 @@ export default function App() {
             <span className="eyebrow">Fotografía</span>
             <h1>Imágenes con piel, atmósfera y memoria.</h1>
             <p>
-              Portfolio de Lucila Aguilar. Retratos, editoriales y escenas con una mirada íntima, femenina y cinematográfica.
+              Portfolio de Lucila Aguilar. Retratos, editoriales y coberturas con una mirada íntima, sensible y cinematográfica.
             </p>
             <div className="hero-actions">
-              <a href="#trabajos" className="primary-link">Ver trabajos</a>
+              <a href="#proyectos" className="primary-link">Ver proyectos</a>
               <a href="#contacto" className="secondary-link">Trabajemos juntas</a>
             </div>
           </motion.div>
@@ -56,8 +77,8 @@ export default function App() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
-            <img className="hero-photo ph-a" src="/images/28-08/09.jpg" alt="Lucila Aguilar portfolio hero" />
-            <div className="hero-note">Selección inicial armada con material real del portfolio.</div>
+            <img className="hero-photo ph-a" src={projects[0].hero} alt={projects[0].title} />
+            <div className="hero-note">Portfolio en construcción con material real seleccionado del archivo.</div>
           </motion.div>
         </section>
 
@@ -67,27 +88,31 @@ export default function App() {
           ))}
         </section>
 
-        <section id="trabajos" className="gallery-section">
+        <section id="proyectos" className="projects-section">
           <div className="section-heading">
-            <span className="eyebrow">Selección</span>
-            <h2>Una base visual para después reemplazar con sus fotos reales.</h2>
+            <span className="eyebrow">Proyectos</span>
+            <h2>Series armadas por sesión, no una galería suelta.</h2>
           </div>
 
-          <div className="masonry-grid">
-            {placeholderShots.map((shot, index) => (
-              <motion.article
-                key={shot.title}
-                className={`shot-card ${shot.ratio}`}
-                initial={{ opacity: 0, y: 30 }}
+          <div className="projects-grid">
+            {projects.map((project, index) => (
+              <motion.button
+                key={project.slug}
+                className="project-card"
+                onClick={() => setActiveProject(project.slug)}
+                initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.6, delay: index * 0.04 }}
+                transition={{ duration: 0.55, delay: index * 0.08 }}
               >
-                <img className="shot-visual" src={shot.image} alt={shot.title} loading="lazy" />
-                <div className="shot-meta">
-                  <span>{shot.title}</span>
+                <img src={project.cover} alt={project.title} className="project-cover" />
+                <div className="project-meta">
+                  <span className="project-category">{project.category}</span>
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                  <span className="project-cta">Ver proyecto completo</span>
                 </div>
-              </motion.article>
+              </motion.button>
             ))}
           </div>
         </section>
@@ -122,6 +147,43 @@ export default function App() {
             <a href="https://wa.me" target="_blank" rel="noreferrer">WhatsApp</a>
             <a href="mailto:hola@lucilaaguilar.com">Mail</a>
           </div>
+        </section>
+      </main>
+    </div>
+  );
+}
+
+function ProjectView({ project, onBack }) {
+  return (
+    <div className="site-shell project-shell">
+      <header className="topbar detail-topbar">
+        <button className="back-project" onClick={onBack}>← Volver al portfolio</button>
+        <div className="brand-name small-brand">Lucila Aguilar</div>
+      </header>
+
+      <main>
+        <section className="project-hero">
+          <div className="project-hero-copy">
+            <span className="eyebrow">{project.category}</span>
+            <h1>{project.title}</h1>
+            <p>{project.description}</p>
+          </div>
+          <img className="project-hero-image" src={project.hero} alt={project.title} />
+        </section>
+
+        <section className="project-gallery">
+          {project.photos.map((src, index) => (
+            <motion.figure
+              key={src}
+              className={`project-shot ${index % 5 === 0 ? 'wide' : index % 3 === 0 ? 'tall' : ''}`}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.45, delay: (index % 6) * 0.04 }}
+            >
+              <img src={src} alt={`${project.title} ${index + 1}`} loading="lazy" />
+            </motion.figure>
+          ))}
         </section>
       </main>
     </div>
