@@ -142,7 +142,7 @@ export default function App() {
             <span className="eyebrow">Sobre mí</span>
             <h2>Una mirada sensible, editorial y profundamente ligada a la atmósfera de cada escena.</h2>
             <p>
-              Lucila Aguilar trabaja entre el retrato, la cobertura y la observación íntima, buscando imágenes con textura, emoción y presencia. Su trabajo combina cercanía, luz y una estética cinematográfica que transforma momentos reales en narrativa visual.
+              Soy Lucila Aguilar, Técnica en Comunicación Audiovisual graduada en la Facultad de Arquitectura, Urbanismo y Diseño de la UNMDP. A través de la fotografía busco construir imágenes con sensibilidad, presencia y narrativa, moviéndome entre el retrato, la cobertura y la observación de lo íntimo.
             </p>
           </div>
           <div className="about-panel">
